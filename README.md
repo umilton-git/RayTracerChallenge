@@ -11,7 +11,7 @@ using modern Java, Gradle, JUnit 4, and IntelliJ IDEA.
 |------|----------------|
 | JDK 17+ | `openjdk 21.0.6` |
 | Gradle Wrapper | `./gradlew --version` prints 8.x |
-| IntelliJ IDEA | (optional) 2024.x Community/Ultimate |
+| IntelliJ IDEA | 2024.x Community/Ultimate |
 
 ## Building & running tests
 
