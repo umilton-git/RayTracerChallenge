@@ -69,3 +69,4 @@ public class Tuple {
                             a.x * b.y - a.y * b.x));
     }
 }
+
