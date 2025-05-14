@@ -4,7 +4,7 @@ public class Tuple {
     double x, y, z, w;
 
     public Tuple(double newX, double newY, double newZ, double newW) {
-        x = newX; y = newY; z = newZ; w = newW;
+        this.x = newX; this.y = newY; this.z = newZ; this.w = newW;
     }
 
     public static Tuple point(double newX, double newY, double newZ){
