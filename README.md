@@ -17,8 +17,14 @@ using modern Java, Gradle, JUnit 4, and IntelliJ IDEA.
 
 ```bash
 # clone and enter the repo
-git clone https://github.com/yourname/raytracer-java.git
-cd raytracer-java
+git clone https://github.com/umilton-git/RayTracerChallenge.git
+cd RayTracerChallenge
 
 # compile and run all unit tests
 ./gradlew test
+
+# build the project
+./gradlew build
+
+# run the project (current default in main creates img.ppm with a single red dot)
+./gradlew run
