@@ -7,10 +7,10 @@ using modern Java, Gradle, JUnit 4, and IntelliJ IDEA.
 
 ## Prerequisites
 
-| Tool | Version tested |
-|------|----------------|
-| JDK 17+ | `openjdk 21.0.6` |
-| Gradle Wrapper | `./gradlew --version` prints 8.x |
+| Tool | Version tested            |
+|------|---------------------------|
+| JDK 17+ | `openjdk 21.0.6`          |
+| Gradle Wrapper | version 8.13              |
 | IntelliJ IDEA | 2024.x Community/Ultimate |
 
 ## Building & running tests
