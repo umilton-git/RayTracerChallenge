@@ -4,8 +4,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TupleTest {
-
     double delta = 1e-9;
+
     @Test
     public void testTuplePoint(){
         Tuple a = new Tuple(4.3, -4.2, 3.1, 1.0);

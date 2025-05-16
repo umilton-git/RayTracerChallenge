@@ -1,4 +1,4 @@
-# Ray Tracer Challenge (Java)
+# Ray Tracer Challenge (Java) (WIP)
 
 An incremental implementation of **Jamis Buck’s _The Ray Tracer Challenge_**  
 using modern Java, Gradle, JUnit 4, and IntelliJ IDEA.
@@ -7,11 +7,11 @@ using modern Java, Gradle, JUnit 4, and IntelliJ IDEA.
 
 ## Prerequisites
 
-| Tool | Version tested            |
-|------|---------------------------|
-| JDK 17+ | `openjdk 21.0.6`          |
-| Gradle Wrapper | version 8.13              |
-| IntelliJ IDEA | 2024.x Community/Ultimate |
+| Tool | Java               |
+|------|--------------------|
+| JDK 17+ | `openjdk 21.0.6`   |
+| Gradle Wrapper | version 8.13       |
+| IntelliJ IDEA | 2025.1.1 Community |
 
 ## Building & running tests
 
