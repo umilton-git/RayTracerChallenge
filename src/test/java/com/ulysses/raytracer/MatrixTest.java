@@ -37,4 +37,16 @@ public class MatrixTest {
 
         assertTrue(expected.equals(result));
     }
+
+    @Test
+    public void testMultTuple(){
+        Matrix mat = new Matrix(4, 4, 1, 2, 3, 4, 2, 4, 4, 2, 8, 6, 4, 1, 0, 0, 0, 1);
+        Tuple t = new Tuple(1, 2, 3, 1);
+        Tuple result = mat.matMultTuple(t);
+
+        assertEquals(18, result.x,  delta);
+        assertEquals(24, result.y,  delta);
+        assertEquals(33, result.z,  delta);
+        assertEquals(1, result.w,  delta);
+    }
 }

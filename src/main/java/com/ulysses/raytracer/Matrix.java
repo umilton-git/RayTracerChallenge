@@ -41,7 +41,7 @@ public class Matrix {
 
     public Matrix matMultiply(Matrix m){
         if(matrix.length != 4 || matrix[0].length != 4 || m.matrix.length != 4 || m.matrix[0].length != 4) {
-            throw new IllegalArgumentException("Error: This project only works with 4x4 matrix multiplication.");
+            throw new IllegalArgumentException("Error: This function only works with 4x4 matrix multiplication.");
         }
 
         Matrix result = new Matrix(4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
@@ -55,4 +55,12 @@ public class Matrix {
         }
         return result;
     }
+
+    public Tuple matMultTuple(Tuple t){
+     return new Tuple(matrix[0][0] * t.x + matrix[0][1] * t.y + matrix[0][2] * t.z + matrix [0][3] * t.w,
+             matrix[1][0] * t.x + matrix[1][1] * t.y + matrix[1][2] * t.z + matrix [1][3] * t.w,
+             matrix[2][0] * t.x + matrix[2][1] * t.y + matrix[2][2] * t.z + matrix [2][3] * t.w,
+             matrix[3][0] * t.x + matrix[3][1] * t.y + matrix[3][2] * t.z + matrix [3][3] * t.w);
+    }
 }
+
