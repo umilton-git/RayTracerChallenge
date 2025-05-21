@@ -62,5 +62,18 @@ public class Matrix {
              matrix[2][0] * t.x + matrix[2][1] * t.y + matrix[2][2] * t.z + matrix [2][3] * t.w,
              matrix[3][0] * t.x + matrix[3][1] * t.y + matrix[3][2] * t.z + matrix [3][3] * t.w);
     }
+
+    public static Matrix matTranspose(Matrix m)
+    {
+        return new Matrix(m.matrix[0].length, m.matrix.length, m.matrix[0][0], m.matrix[1][0], m.matrix[2][0], m.matrix[3][0],
+                                                               m.matrix[0][1], m.matrix[1][1], m.matrix[2][1], m.matrix[3][1],
+                                                               m.matrix[0][2], m.matrix[1][2], m.matrix[2][2], m.matrix[3][2],
+                                                               m.matrix[0][3], m.matrix[1][3], m.matrix[2][3], m.matrix[3][3]);
+    }
+
+    /*public static Matrix matInverse(Matrix m)
+    {
+
+    }*/
 }
 

@@ -49,4 +49,12 @@ public class MatrixTest {
         assertEquals(33, result.z,  delta);
         assertEquals(1, result.w,  delta);
     }
+
+    @Test
+    public void testTranspose(){
+        Matrix m = new Matrix(4, 4, 0,9,3,0,9,8,0,8,1,8,5,3,0,0,5,8);
+        Matrix expected = new Matrix(4,4, 0,9,1,0,9,8,8,0,3,0,5,5,0,8,3,8);
+        Matrix result = Matrix.matTranspose(m);
+        assertTrue(expected.equals(result));
+    }
 }
