@@ -65,4 +65,12 @@ public class MatrixTest {
         double result = m.twoByTwoDeterminant();
         assertEquals(expected, result, delta);
     }
+
+    @Test
+    public void testSubmatrix(){
+        Matrix m = new Matrix(3, 3, 1,5,0,-3,2,7,0,6,-3);
+        Matrix m2 = Matrix.submatrix(m, 0, 2);
+        Matrix expected = new Matrix(2, 2, -3,2,0,6);
+        assertTrue(expected.equals(m2));
+    }
 }

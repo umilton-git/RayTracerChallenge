@@ -19,6 +19,11 @@ public class Matrix {
         }
     }
 
+    public Matrix(int rows, int cols) {
+        this(rows, cols, new double[rows * cols]);   // all zeros
+    }
+
+
     public double at(int row, int col) { return matrix[row][col]; }
 
     @Override
@@ -77,6 +82,20 @@ public class Matrix {
             throw new IllegalArgumentException("Error: This function only works with 2x2 matrices.");
         }
         return((matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0]));
+    }
+
+    public static Matrix submatrix(Matrix A, int row, int col){
+        Matrix newMatrix = new Matrix(A.matrix.length - 1, A.matrix[0].length - 1);
+        for(int i = 0; i < A.matrix.length; i++){
+            if(i == row) continue;
+            for(int j = 0; j < A.matrix[0].length; j++){
+                if(j == col) continue;
+                int newRow = (i < row) ? i : i - 1;
+                int newCol = (j < col) ? j : j - 1;
+                newMatrix.matrix[newRow][newCol] = A.matrix[i][j];
+            }
+        }
+        return newMatrix;
     }
 
     /*public static Matrix matInverse(Matrix m)
