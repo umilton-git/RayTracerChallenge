@@ -71,6 +71,14 @@ public class Matrix {
                                                                m.matrix[0][3], m.matrix[1][3], m.matrix[2][3], m.matrix[3][3]);
     }
 
+    public double twoByTwoDeterminant()
+    {
+        if(matrix.length != 2 || matrix[0].length != 2) {
+            throw new IllegalArgumentException("Error: This function only works with 2x2 matrices.");
+        }
+        return((matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0]));
+    }
+
     /*public static Matrix matInverse(Matrix m)
     {
 

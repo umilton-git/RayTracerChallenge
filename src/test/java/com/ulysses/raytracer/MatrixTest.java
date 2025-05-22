@@ -57,4 +57,12 @@ public class MatrixTest {
         Matrix result = Matrix.matTranspose(m);
         assertTrue(expected.equals(result));
     }
+
+    @Test
+    public void testTwoByTwoDeterminant(){
+        Matrix m = new Matrix(2, 2, 1,5,-3,2);
+        double expected = 17;
+        double result = m.twoByTwoDeterminant();
+        assertEquals(expected, result, delta);
+    }
 }
