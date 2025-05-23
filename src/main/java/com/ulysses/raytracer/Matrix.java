@@ -76,10 +76,22 @@ public class Matrix {
                                                                m.matrix[0][3], m.matrix[1][3], m.matrix[2][3], m.matrix[3][3]);
     }
 
-    public double twoByTwoDeterminant()
+    public double determinant()
     {
-        if(matrix.length != 2 || matrix[0].length != 2) {
-            throw new IllegalArgumentException("Error: This function only works with 2x2 matrices.");
+        if(matrix.length == 3 && matrix[0].length == 3) {
+            double cofactor1 = Matrix.cofactor(this, 0, 0);
+            double cofactor2 = Matrix.cofactor(this, 0, 1);
+            double cofactor3 = Matrix.cofactor(this, 0, 2);
+
+            return(matrix[0][0] * cofactor1 + matrix[0][1] * cofactor2 + matrix[0][2] * cofactor3);
+        }
+        else if(matrix.length == 4 && matrix[0].length == 4) {
+            double cofactor1 = Matrix.cofactor(this, 0, 0);
+            double cofactor2 = Matrix.cofactor(this, 0, 1);
+            double cofactor3 = Matrix.cofactor(this, 0, 2);
+            double cofactor4 = Matrix.cofactor(this, 0, 3);
+
+            return(matrix[0][0] * cofactor1 + matrix[0][1] * cofactor2 + matrix[0][2] * cofactor3 + matrix[0][3] * cofactor4);
         }
         return((matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0]));
     }
@@ -100,7 +112,7 @@ public class Matrix {
 
     public static double minor(Matrix A, int row, int col){
      Matrix m = submatrix(A, row, col);
-     double minor = m.twoByTwoDeterminant();
+     double minor = m.determinant();
      return minor;
     }
 

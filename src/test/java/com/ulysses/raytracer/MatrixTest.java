@@ -59,10 +59,20 @@ public class MatrixTest {
     }
 
     @Test
-    public void testTwoByTwoDeterminant(){
+    public void testDeterminant(){
         Matrix m = new Matrix(2, 2, 1,5,-3,2);
         double expected = 17;
-        double result = m.twoByTwoDeterminant();
+        double result = m.determinant();
+        assertEquals(expected, result, delta);
+
+        m = new Matrix(3, 3, 1,2,6,-5,8,-4,2,6,4);
+        expected = -196;
+        result = m.determinant();
+        assertEquals(expected, result, delta);
+
+        m = new Matrix(4, 4, -2,-8,3,5,-3,1,7,3,1,2,-9,6,-6,7,7,-9);
+        expected = -4071;
+        result = m.determinant();
         assertEquals(expected, result, delta);
     }
 
