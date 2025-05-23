@@ -85,4 +85,14 @@ public class MatrixTest {
         double minor = Matrix.minor(m, 1, 0);
         assertEquals(25, minor, delta);
     }
+
+    @Test
+    public void testCofactor(){
+        Matrix m = new Matrix(3, 3, 3,5,0,2,-1,-7,6,-1,5);
+        double expected1 = -12;
+        double expected2 = -25;
+
+        assertEquals(expected1, Matrix.cofactor(m, 0, 0), delta);
+        assertEquals(expected2, Matrix.cofactor(m, 1, 0), delta);
+    }
 }

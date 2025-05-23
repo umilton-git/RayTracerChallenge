@@ -104,6 +104,12 @@ public class Matrix {
      return minor;
     }
 
+    public static double cofactor(Matrix A, int row, int col){
+        int check = row + col;
+        double cofactor = (check % 2 == 0) ? Matrix.minor(A, row, col) : -Matrix.minor(A, row, col);
+        return cofactor;
+    }
+
     /*public static Matrix matInverse(Matrix m)
     {
 
