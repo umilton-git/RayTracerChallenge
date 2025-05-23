@@ -98,6 +98,12 @@ public class Matrix {
         return newMatrix;
     }
 
+    public static double minor(Matrix A, int row, int col){
+     Matrix m = submatrix(A, row, col);
+     double minor = m.twoByTwoDeterminant();
+     return minor;
+    }
+
     /*public static Matrix matInverse(Matrix m)
     {
 

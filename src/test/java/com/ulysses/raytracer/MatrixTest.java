@@ -72,5 +72,17 @@ public class MatrixTest {
         Matrix m2 = Matrix.submatrix(m, 0, 2);
         Matrix expected = new Matrix(2, 2, -3,2,0,6);
         assertTrue(expected.equals(m2));
+
+        m = new Matrix(4, 4, -6,1,1,6,-8,5,8,6,-1,0,8,2,-7,1,-1,1);
+        m2 = Matrix.submatrix(m, 2, 1);
+        expected = new Matrix(3, 3, -6,1,6,-8,8,6,-7,-1,1);
+        assertTrue(expected.equals(m2));
+    }
+
+    @Test
+    public void testMinor(){
+        Matrix m = new Matrix(3, 3, 3,5,0,2,-1,-7,6,-1,5);
+        double minor = Matrix.minor(m, 1, 0);
+        assertEquals(25, minor, delta);
     }
 }
