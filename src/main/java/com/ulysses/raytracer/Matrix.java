@@ -122,9 +122,23 @@ public class Matrix {
         return cofactor;
     }
 
-    /*public static Matrix matInverse(Matrix m)
-    {
+    public static Matrix Inverse(Matrix m) {
+        double det = m.determinant();
+        if (Math.abs(det) < 1e-9) {
+            throw new IllegalArgumentException("Matrix is not invertible (det ≈ 0).");
+        }
 
-    }*/
+        int n = m.matrix.length;
+        Matrix inv = new Matrix(n, n);
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                double cof = Matrix.cofactor(m, i, j);
+                inv.matrix[j][i] = cof / det;
+            }
+        }
+        return inv;
+    }
+
 }
 

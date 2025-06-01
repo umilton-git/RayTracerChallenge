@@ -105,4 +105,36 @@ public class MatrixTest {
         assertEquals(expected1, Matrix.cofactor(m, 0, 0), delta);
         assertEquals(expected2, Matrix.cofactor(m, 1, 0), delta);
     }
+
+    @Test
+    public void testInverse(){
+        Matrix m = new Matrix(4, 4, 8,-5,9,2,7,5,6,1,-6,0,9,6,-3,0,-9,-4);
+        Matrix expected = new Matrix(4, 4, -0.15385,-0.15385,-0.28205,-0.53846,-0.07692,0.12308,0.02564,0.03077,0.35897,0.35897,0.43590,0.92308,-0.69231,-0.69231,-0.76923,-1.92308);
+        Matrix result = Matrix.Inverse(m);
+
+        // First Row
+        assertEquals(expected.matrix[0][0], -0.15385, delta);
+        assertEquals(expected.matrix[0][1], -0.15385, delta);
+        assertEquals(expected.matrix[0][2], -0.28205, delta);
+        assertEquals(expected.matrix[0][3], -0.53846, delta);
+
+
+        // Second row
+        assertEquals(expected.matrix[1][0], -0.07692, delta);
+        assertEquals(expected.matrix[1][1],  0.12308, delta);
+        assertEquals(expected.matrix[1][2],  0.02564, delta);
+        assertEquals(expected.matrix[1][3],  0.03077, delta);
+
+        // Third row
+        assertEquals(expected.matrix[2][0],  0.35897, delta);
+        assertEquals(expected.matrix[2][1],  0.35897, delta);
+        assertEquals(expected.matrix[2][2],  0.43590, delta);
+        assertEquals(expected.matrix[2][3],  0.92308, delta);
+
+        // Fourth row
+        assertEquals(expected.matrix[3][0], -0.69231, delta);
+        assertEquals(expected.matrix[3][1], -0.69231, delta);
+        assertEquals(expected.matrix[3][2], -0.76923, delta);
+        assertEquals(expected.matrix[3][3], -1.92308, delta);
+    }
 }
