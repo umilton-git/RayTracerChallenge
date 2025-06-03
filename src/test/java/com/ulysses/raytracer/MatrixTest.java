@@ -7,7 +7,7 @@ public class MatrixTest {
     double delta = 1e-9;
 
     @Test
-    public void testMatrix(){
+    public void testMatrix() {
         Matrix m = new Matrix(4, 4, 1, 2, 3, 4, 5.5, 6.5, 7.5, 8.5, 9, 10, 11, 12, 13.5, 14.5, 15.5, 16.5);
 
         assertEquals(1, m.at(0, 0), delta);
@@ -19,7 +19,7 @@ public class MatrixTest {
     }
 
     @Test
-    public void testEquals(){
+    public void testEquals() {
         Matrix matA = new Matrix(4, 4, 1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2);
         Matrix matB = new Matrix(4, 4, 1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2);
         Matrix matC = new Matrix(4, 4, 1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 4);
@@ -29,7 +29,7 @@ public class MatrixTest {
     }
 
     @Test
-    public void testMultiply(){
+    public void testMultiply() {
         Matrix matA = new Matrix(4, 4, 1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2);
         Matrix matB = new Matrix(4, 4, -2, 1, 2, 3, 3, 2, 1, -1, 4, 3, 6, 5, 1, 2, 7, 8);
         Matrix expected = new Matrix(4, 4, 20, 22, 50, 48, 44, 54, 114, 108, 40, 58, 110, 102, 16, 26, 46, 42);
@@ -39,7 +39,7 @@ public class MatrixTest {
     }
 
     @Test
-    public void testMultTuple(){
+    public void testMultTuple() {
         Matrix mat = new Matrix(4, 4, 1, 2, 3, 4, 2, 4, 4, 2, 8, 6, 4, 1, 0, 0, 0, 1);
         Tuple t = new Tuple(1, 2, 3, 1);
         Tuple result = mat.matMultTuple(t);
@@ -51,7 +51,7 @@ public class MatrixTest {
     }
 
     @Test
-    public void testTranspose(){
+    public void testTranspose() {
         Matrix m = new Matrix(4, 4, 0,9,3,0,9,8,0,8,1,8,5,3,0,0,5,8);
         Matrix expected = new Matrix(4,4, 0,9,1,0,9,8,8,0,3,0,5,5,0,8,3,8);
         Matrix result = Matrix.matTranspose(m);
@@ -59,7 +59,7 @@ public class MatrixTest {
     }
 
     @Test
-    public void testDeterminant(){
+    public void testDeterminant() {
         Matrix m = new Matrix(2, 2, 1,5,-3,2);
         double expected = 17;
         double result = m.determinant();
@@ -77,7 +77,7 @@ public class MatrixTest {
     }
 
     @Test
-    public void testSubmatrix(){
+    public void testSubmatrix() {
         Matrix m = new Matrix(3, 3, 1,5,0,-3,2,7,0,6,-3);
         Matrix m2 = Matrix.submatrix(m, 0, 2);
         Matrix expected = new Matrix(2, 2, -3,2,0,6);
@@ -90,14 +90,14 @@ public class MatrixTest {
     }
 
     @Test
-    public void testMinor(){
+    public void testMinor() {
         Matrix m = new Matrix(3, 3, 3,5,0,2,-1,-7,6,-1,5);
         double minor = Matrix.minor(m, 1, 0);
         assertEquals(25, minor, delta);
     }
 
     @Test
-    public void testCofactor(){
+    public void testCofactor() {
         Matrix m = new Matrix(3, 3, 3,5,0,2,-1,-7,6,-1,5);
         double expected1 = -12;
         double expected2 = -25;
@@ -107,7 +107,7 @@ public class MatrixTest {
     }
 
     @Test
-    public void testInverse(){
+    public void testInverse() {
         Matrix m = new Matrix(4, 4, 8,-5,9,2,7,5,6,1,-6,0,9,6,-3,0,-9,-4);
         Matrix expected = new Matrix(4, 4, -0.15385,-0.15385,-0.28205,-0.53846,-0.07692,0.12308,0.02564,0.03077,0.35897,0.35897,0.43590,0.92308,-0.69231,-0.69231,-0.76923,-1.92308);
         Matrix result = Matrix.Inverse(m);
@@ -140,7 +140,8 @@ public class MatrixTest {
 
     // Transformations
 
-    @Test public void translationTest(){
+    @Test
+    public void translationTest() {
         // Translation on point
         Tuple p = Tuple.point(-3, 4, 5);
         Tuple result = Matrix.Translate(p, 5, -3, 2);
@@ -158,7 +159,8 @@ public class MatrixTest {
         assertEquals(result.x, v.x, delta); assertEquals(result.y, v.y, delta); assertEquals(result.z, v.z, delta);
     }
 
-    @Test public void scaleTest(){
+    @Test
+    public void scaleTest() {
         // Scale on point
         Tuple p = Tuple.point(-4, 6, 8);
         Tuple result = Matrix.Scale(p, 2, 3, 4);
@@ -176,5 +178,23 @@ public class MatrixTest {
         result = Matrix.ScaleInv(v, 2, 3, 4);
         expected = Tuple.vector(-2, 2, 2);
         assertEquals(result.x, expected.x, delta); assertEquals(result.y, expected.y, delta); assertEquals(result.z, expected.z, delta);
+    }
+
+    @Test
+    public void rotationXTest() {
+        Tuple p = Tuple.point(0, 1, 0);
+        Tuple half_quarter = Matrix.RotationX(p, Math.PI / 4);
+        Tuple full_quarter = Matrix.RotationX(p, Math.PI / 2);
+
+        Tuple half_quarter_expected = Tuple.point(0, (Math.sqrt(2) / 2), (Math.sqrt(2) / 2));
+        Tuple full_quarter_expected = Tuple.point (0, 0, 1);
+
+        assertEquals(half_quarter_expected.x, half_quarter.x, delta);
+        assertEquals(half_quarter_expected.y, half_quarter.y,  delta);
+        assertEquals(half_quarter_expected.z, half_quarter.z, delta);
+
+        assertEquals(full_quarter_expected.x, full_quarter.x, delta);
+        assertEquals(full_quarter_expected.y, full_quarter.y,  delta);
+        assertEquals(full_quarter_expected.z, full_quarter.z, delta);
     }
 }

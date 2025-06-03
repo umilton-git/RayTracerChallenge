@@ -186,5 +186,13 @@ public class Matrix {
 
         return scale.matMultTuple(t);
     }
+
+    public static Tuple RotationX(Tuple t, double radians) {
+        Matrix rotation = new Matrix(4, 4, 1, 0, 0, 0,
+                                                                0, Math.cos(radians), -(Math.sin(radians)), 0,
+                                                                0, Math.sin(radians), Math.cos(radians), 0,
+                                                                0, 0, 0, 1);
+        return rotation.matMultTuple(t);
+    }
 }
 
