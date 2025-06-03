@@ -1,0 +1,54 @@
+name: Java CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-test:
+    name: Build & Test (JDK ${{ matrix.java }})
+    runs-on: ubuntu-latest
+
+    # run the same job on multiple Java versions
+    strategy:
+      matrix:
+        java: [ '17', '21' ]
+
+    steps:
+      # 1️⃣  Fetch the source
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2️⃣  Set up the requested JDK and enable Gradle cache
+      - name: Set up JDK ${{ matrix.java }}
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+          cache: gradle   # automatic ~/.gradle caching
+
+      # 3️⃣  Make the wrapper executable (Unix runners need this)
+      - name: Grant execute permission for gradlew
+        run: chmod +x ./gradlew
+
+      # 4️⃣  Build, run unit tests, and create the jar
+      - name: Build with Gradle
+        run: ./gradlew clean build  # runs `test` inside `build`
+
+      # 5️⃣  Upload the HTML test report so you can click through failures
+      - name: Publish Test Report
+        if: always()                # upload even if tests failed
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-report-jdk${{ matrix.java }}
+          path: build/reports/tests/test  # Gradle’s default
+
+      # 6️⃣  Save the compiled jar (only once per workflow)
+      - name: Upload JAR
+        if: ${{ matrix.java == '17' && success() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: raytracer-jar
+          path: build/libs/*.jar
