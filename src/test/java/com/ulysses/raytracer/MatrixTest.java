@@ -197,4 +197,22 @@ public class MatrixTest {
         assertEquals(full_quarter_expected.y, full_quarter.y,  delta);
         assertEquals(full_quarter_expected.z, full_quarter.z, delta);
     }
+
+    @Test
+    public void rotationYTest() {
+        Tuple p = Tuple.point(0, 0, 1);
+        Tuple half_quarter = Matrix.RotationY(p, Math.PI / 4);
+        Tuple full_quarter = Matrix.RotationY(p, Math.PI / 2);
+
+        Tuple half_quarter_expected = Tuple.point((Math.sqrt(2) / 2), 0, (Math.sqrt(2) / 2));
+        Tuple full_quarter_expected = Tuple.point (1, 0, 0);
+
+        assertEquals(half_quarter_expected.x, half_quarter.x, delta);
+        assertEquals(half_quarter_expected.y, half_quarter.y,  delta);
+        assertEquals(half_quarter_expected.z, half_quarter.z, delta);
+
+        assertEquals(full_quarter_expected.x, full_quarter.x, delta);
+        assertEquals(full_quarter_expected.y, full_quarter.y,  delta);
+        assertEquals(full_quarter_expected.z, full_quarter.z, delta);
+    }
 }
