@@ -157,4 +157,24 @@ public class MatrixTest {
         result = Matrix.Translate(v, 5, -3, 2);
         assertEquals(result.x, v.x, delta); assertEquals(result.y, v.y, delta); assertEquals(result.z, v.z, delta);
     }
+
+    @Test public void scaleTest(){
+        // Scale on point
+        Tuple p = Tuple.point(-4, 6, 8);
+        Tuple result = Matrix.Scale(p, 2, 3, 4);
+        Tuple expected = Tuple.point(-8, 18, 32);
+        assertEquals(result.x, expected.x, delta); assertEquals(result.y, expected.y, delta); assertEquals(result.z, expected.z, delta);
+
+        // Scale affects vectors
+        Tuple v = Tuple.vector(-4, 6, 8);
+        result = Matrix.Scale(v, 2, 3, 4);
+        expected = Tuple.vector(-8, 18, 32);
+        assertEquals(result.x, expected.x, delta); assertEquals(result.y, expected.y, delta); assertEquals(result.z, expected.z, delta);
+
+        // Scaling Inverse
+        v = Tuple.vector(-4, 6, 8);
+        result = Matrix.ScaleInv(v, 2, 3, 4);
+        expected = Tuple.vector(-2, 2, 2);
+        assertEquals(result.x, expected.x, delta); assertEquals(result.y, expected.y, delta); assertEquals(result.z, expected.z, delta);
+    }
 }

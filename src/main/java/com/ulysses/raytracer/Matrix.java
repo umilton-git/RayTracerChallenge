@@ -158,12 +158,33 @@ public class Matrix {
         if(t.w == 0) {
             return t;
         }
-        Matrix translate = new Matrix(4, 4, 1, 0, 0, -translateX,
-                0, 1, 0, -translateY,
-                0, 0, 1, -translateZ,
+        Matrix translate = new Matrix(4, 4, 1, 0, 0, translateX,
+                0, 1, 0, translateY,
+                0, 0, 1, translateZ,
                 0, 0, 0, 1);
 
+        translate = Matrix.Inverse(translate);
+
         return translate.matMultTuple(t);
+    }
+
+    public static Tuple Scale(Tuple t, double scaleX, double scaleY, double scaleZ) {
+        Matrix scale = new Matrix(4, 4, scaleX, 0, 0, 0,
+                                                                0, scaleY, 0, 0,
+                                                                0, 0, scaleZ, 0,
+                                                                0, 0, 0, 1);
+
+        return scale.matMultTuple(t);
+    }
+
+    public static Tuple ScaleInv(Tuple t, double scaleX, double scaleY, double scaleZ) {
+        Matrix scale = new Matrix(4, 4, scaleX, 0, 0, 0,
+                                                            0, scaleY, 0, 0,
+                                                            0, 0, scaleZ, 0,
+                                                            0, 0, 0, 1);
+        scale = Matrix.Inverse(scale);
+
+        return scale.matMultTuple(t);
     }
 }
 
