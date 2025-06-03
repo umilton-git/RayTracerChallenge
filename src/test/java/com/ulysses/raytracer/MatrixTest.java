@@ -137,4 +137,24 @@ public class MatrixTest {
         assertEquals(expected.matrix[3][2], -0.76923, delta);
         assertEquals(expected.matrix[3][3], -1.92308, delta);
     }
+
+    // Transformations
+
+    @Test public void translationTest(){
+        // Translation on point
+        Tuple p = Tuple.point(-3, 4, 5);
+        Tuple result = Matrix.Translate(p, 5, -3, 2);
+        Tuple expected = Tuple.point(2, 1, 7);
+        assertEquals(result.x, expected.x, delta); assertEquals(result.y, expected.y, delta); assertEquals(result.z, expected.z, delta);
+
+        // Translation Inverse
+        result = Matrix.TranslateInv(p, 5, -3, 2);
+        expected = Tuple.point(-8, 7, 3);
+        assertEquals(result.x, expected.x, delta); assertEquals(result.y, expected.y, delta); assertEquals(result.z, expected.z, delta);
+
+        // Translation doesn't affect vectors
+        Tuple v = Tuple.vector(-3, 4, 5);
+        result = Matrix.Translate(v, 5, -3, 2);
+        assertEquals(result.x, v.x, delta); assertEquals(result.y, v.y, delta); assertEquals(result.z, v.z, delta);
+    }
 }

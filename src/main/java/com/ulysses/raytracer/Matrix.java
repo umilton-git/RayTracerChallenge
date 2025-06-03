@@ -140,5 +140,30 @@ public class Matrix {
         return inv;
     }
 
+    // Transformations
+
+    public static Tuple Translate(Tuple t, double translateX, double translateY, double translateZ) {
+        if(t.w == 0) {
+            return t;
+        }
+        Matrix translate = new Matrix(4, 4, 1, 0, 0, translateX,
+                0, 1, 0, translateY,
+                0, 0, 1, translateZ,
+                0, 0, 0, 1);
+
+        return translate.matMultTuple(t);
+    }
+
+    public static Tuple TranslateInv(Tuple t, double translateX, double translateY, double translateZ) {
+        if(t.w == 0) {
+            return t;
+        }
+        Matrix translate = new Matrix(4, 4, 1, 0, 0, -translateX,
+                0, 1, 0, -translateY,
+                0, 0, 1, -translateZ,
+                0, 0, 0, 1);
+
+        return translate.matMultTuple(t);
+    }
 }
 
