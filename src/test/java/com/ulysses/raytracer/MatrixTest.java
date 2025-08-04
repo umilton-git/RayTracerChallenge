@@ -233,4 +233,61 @@ public class MatrixTest {
         assertEquals(full_quarter_expected.y, full_quarter.y,  delta);
         assertEquals(full_quarter_expected.z, full_quarter.z, delta);
     }
+
+    @Test
+    public void shearingTest() {
+        // Transformation moving x in proportion to y
+        Tuple p = Tuple.point(2, 3, 4);
+        Tuple expected = Tuple.point(5, 3, 4);
+        Tuple result = Matrix.Shearing(p, 1, 0, 0, 0, 0, 0);
+
+        assertEquals(expected.x, result.x, delta);
+        assertEquals(expected.y, result.y, delta);
+        assertEquals(expected.z, result.z, delta);
+
+        // transformation moving x in proportion to z
+        p = Tuple.point(2, 3, 4);
+        expected = Tuple.point(6, 3, 4);
+        result = Matrix.Shearing(p, 0, 1, 0, 0, 0, 0);
+
+        assertEquals(expected.x, result.x, delta);
+        assertEquals(expected.y, result.y, delta);
+        assertEquals(expected.z, result.z, delta);
+
+        // transformation moving y in proportion to x
+        p = Tuple.point(2, 3, 4);
+        expected = Tuple.point(2, 5, 4);
+        result = Matrix.Shearing(p, 0, 0, 1, 0, 0, 0);
+
+        assertEquals(expected.x, result.x, delta);
+        assertEquals(expected.y, result.y, delta);
+        assertEquals(expected.z, result.z, delta);
+
+        // transformation moving y in proportion to z
+        p = Tuple.point(2, 3, 4);
+        expected = Tuple.point(2, 7, 4);
+        result = Matrix.Shearing(p, 0, 0, 0, 1, 0, 0);
+
+        assertEquals(expected.x, result.x, delta);
+        assertEquals(expected.y, result.y, delta);
+        assertEquals(expected.z, result.z, delta);
+
+        // transformation moving z in proportion to x
+        p = Tuple.point(2, 3, 4);
+        expected = Tuple.point(2, 3, 6);
+        result = Matrix.Shearing(p, 0, 0, 0, 0, 1, 0);
+
+        assertEquals(expected.x, result.x, delta);
+        assertEquals(expected.y, result.y, delta);
+        assertEquals(expected.z, result.z, delta);
+
+        // transformation moving z in proportion to y
+        p = Tuple.point(2, 3, 4);
+        expected = Tuple.point(2, 3, 7);
+        result = Matrix.Shearing(p, 0, 0, 0, 0, 0, 1);
+
+        assertEquals(expected.x, result.x, delta);
+        assertEquals(expected.y, result.y, delta);
+        assertEquals(expected.z, result.z, delta);
+    }
 }

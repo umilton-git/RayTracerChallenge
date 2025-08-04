@@ -210,5 +210,13 @@ public class Matrix {
                                                                 0, 0, 0, 1);
         return rotation.matMultTuple(t);
     }
+    public static Tuple Shearing(Tuple t, double xy, double xz, double yx, double yz, double zx, double zy) {
+        Matrix shear = new Matrix(4, 4, 1, xy, xz, 0,
+                                                            yx, 1, yz, 0,
+                                                            zx, zy, 1, 0,
+                                                            0, 0, 0, 1);
+
+        return shear.matMultTuple(t);
+    }
 }
 
