@@ -5,4 +5,8 @@ public class Ray {
 
     public Ray(Tuple newOrigin, Tuple newDirection) { this.origin = newOrigin; this.direction = newDirection; }
 
+    public Tuple Position(double t) {
+        return Tuple.multiply(Tuple.add(origin, direction), t);
+    }
+
 }
